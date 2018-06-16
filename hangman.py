@@ -7,9 +7,9 @@ def show_guess(word, guesses):
     show = list(word)
     for x in show:
         if x in guesses:
-            print (x)
+            print (x, end=" ")
         else:
-            print ('_')
+            print ('_', end=" ")
 
 
 
