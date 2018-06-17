@@ -26,5 +26,11 @@ def make_guess(word, guesses):
     guesses.append(guess)
     show_guess(word, guesses)
 
+    print ('\n\nNumber of wrong guesses: ' + str(wrong_guess_count(word, guesses)))
+
+    print(show_guess(word, guesses))
+
+    make_guess(word, guesses)
+
 
 make_guess('sunflower', [])
