@@ -8,6 +8,15 @@ def wrong_guess_count(word, guesses):
 def is_winner(word, guesses):
     if wrong_guess_count(word, guesses) > 6:
         print ('You Lost!')
+        play_again()
+
+
+def play_again():
+    question = input('Do you want to play again (y/n)? ')
+    if question.lower == 'y':
+        make_guess('tulip', [])
+    else:
+        return
 
 
 def show_guess(word, guesses):
@@ -28,7 +37,8 @@ def make_guess(word, guesses):
 
     print ('\n\nNumber of wrong guesses: ' + str(wrong_guess_count(word, guesses))+'\n')
 
-    make_guess(word, guesses)
+    if wrong_guess_count(word, guesses) <= 7:
+        make_guess(word, guesses)
 
 
 make_guess('sunflower', [])
