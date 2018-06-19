@@ -34,6 +34,7 @@ def show_guess(word, guesses):
 
 
 def make_guess(word, guesses):
+    is_winner(word, guesses)
     guess = input('Guess a letter ')
     print ('Player wrote: %s' % (guess))
     guesses.append(guess)
@@ -41,10 +42,8 @@ def make_guess(word, guesses):
 
     print ('\n\nNumber of wrong guesses: ' + str(wrong_guess_count(word, guesses))+'\n')
 
-    if wrong_guess_count(word, guesses) < 7:
+    if wrong_guess_count(word, guesses) <= 7:
         make_guess(word, guesses)
-    else:
-        is_winner(word, guesses)
 
 
 make_guess('sunflower', [])
