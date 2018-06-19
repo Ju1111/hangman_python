@@ -6,6 +6,9 @@ def wrong_guess_count(word, guesses):
 
 
 def is_winner(word, guesses):
+    if word == show_guess(word, guesses):
+        print ('Yaaaaay, you won!')
+        play_again()
     if wrong_guess_count(word, guesses) > 6:
         print ('You Lost!')
         play_again()
@@ -21,18 +24,20 @@ def play_again():
 
 def show_guess(word, guesses):
     show = list(word)
+    result = ''
     for x in show:
         if x in guesses:
-            print (x, end=" ")
+            result += x
         else:
-            print ('_', end=" ")
+           result += '_'
+    return result
 
 
 def make_guess(word, guesses):
     guess = input('Guess a letter ')
     print ('Player wrote: %s' % (guess))
     guesses.append(guess)
-    show_guess(word, guesses)
+    print (show_guess(word, guesses))
 
     print ('\n\nNumber of wrong guesses: ' + str(wrong_guess_count(word, guesses))+'\n')
 
