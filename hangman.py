@@ -1,4 +1,6 @@
-# words = ['sunflower', 'tulip', 'daisy']
+import random
+
+words = ['sunflower', 'tulip', 'daisy']
 
 def wrong_guess_count(word, guesses):
     wrong_guesses = [list(x) for x in guesses if x not in word]
@@ -46,4 +48,4 @@ def make_guess(word, guesses):
         make_guess(word, guesses)
 
 
-make_guess('sunflower', [])
+make_guess(random.choice(words), [])
