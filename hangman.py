@@ -1,27 +1,33 @@
 import random
 
-words = ['sunflower', 'tulip', 'daisy']
+words = ['sunflower', 'tulip', 'daisy', 'lilly']
+
 
 def wrong_guess_count(word, guesses):
     wrong_guesses = [list(x) for x in guesses if x not in word]
     return len(wrong_guesses)
 
 
-def is_winner(word, guesses):
+def winner(word, guesses):
     if word == show_guess(word, guesses):
         print ('Yaaaaay, you won!')
-        play_again()
-    if wrong_guess_count(word, guesses) > 6:
+        return play_again()
+    elif wrong_guess_count(word, guesses) > 6:
         print ('You Lost!')
-        play_again()
+        return play_again()
+    else:
+        return True
 
 
 def play_again():
-    question = input('Do you want to play again (y/n)? ')
+    question = input('\nDo you want to play again (y/n)? ')
     if question.lower() == 'y':
-        make_guess('tulip', [])
-    else:
+        make_guess(random.choice(words), [])
+    elif question.lower() == 'n':
         return False
+    else:
+        print ('Please chose y or n')
+        play_again()
 
 
 def show_guess(word, guesses):
@@ -31,12 +37,14 @@ def show_guess(word, guesses):
         if x in guesses:
             result += x
         else:
-           result += '_'
+            result += '_'
     return result
 
 
 def make_guess(word, guesses):
-    is_winner(word, guesses)
+    if not winner(word, guesses):
+        return
+
     guess = input('Guess a letter ')
     print ('Player wrote: %s' % (guess))
     guesses.append(guess)
