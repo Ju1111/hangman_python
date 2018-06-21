@@ -11,9 +11,11 @@ def wrong_guess_count(word, guesses):
 def winner(word, guesses):
     if word == show_guess(word, guesses):
         print ('Yaaaaay, you won!')
+        print ('The word was indeed ' + word.upper())
         return play_again()
     elif wrong_guess_count(word, guesses) > 6:
         print ('You Lost!')
+        print ('The correct word would have been ' + word.upper())
         return play_again()
     else:
         return True
