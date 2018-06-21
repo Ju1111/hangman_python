@@ -40,6 +40,9 @@ def show_guess(word, guesses):
             result += '_'
     return result
 
+def print_word(result):
+    print(" ".join(result))
+
 
 def make_guess(word, guesses):
     if not winner(word, guesses):
@@ -48,7 +51,7 @@ def make_guess(word, guesses):
     guess = input('Guess a letter ')
     print ('Player wrote: %s' % (guess))
     guesses.append(guess)
-    print (show_guess(word, guesses))
+    print_word(show_guess(word, guesses))
 
     print ('\n\nNumber of wrong guesses: ' + str(wrong_guess_count(word, guesses))+'\n')
 
