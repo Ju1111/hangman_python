@@ -1,6 +1,8 @@
 import random
 
-words = ['sunflower', 'tulip', 'daisy', 'lilly']
+words = ['amsterdam', 'london', 'berlin', 'copenhagen', 'oslo', 'paris', 'brussels', 'dublin', 'belfast', 'stockholm',
+         'helsinki', 'vienna','sofia', 'sarajevo', 'prague', 'zagreb', 'athens', 'budapest', 'rome', 'warsaw', 'lisbon',
+         'bucharest', 'bratislava', 'madrid', 'bern']
 
 
 def wrong_guess_count(word, guesses):
@@ -58,7 +60,10 @@ def make_guess(word, guesses):
     if not winner(word, guesses):
         return
 
-    guess = input('Guess a letter ')
+    if len(guesses) == 0:
+        print("Welcome to the european capitals hangman. Please choose a letter to guess the first city.")
+
+    guess = input('Guess a letter ').lower()
 
     if skip_duplicate(guess, guesses):
         make_guess(word, guesses)
