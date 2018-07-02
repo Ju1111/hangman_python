@@ -42,8 +42,16 @@ def show_guess(word, guesses):
             result += '_'
     return result
 
+
 def print_word(result):
     print(" ".join(result))
+
+
+def skip_duplicate(guess, guesses):
+    if guess in guesses:
+        print('You have already guessed ' + guess.upper())
+        print('Please choose a different letter')
+        return True
 
 
 def make_guess(word, guesses):
@@ -51,13 +59,17 @@ def make_guess(word, guesses):
         return
 
     guess = input('Guess a letter ')
+
+    if skip_duplicate(guess, guesses):
+        make_guess(word, guesses)
+
     print ('Player wrote: %s' % (guess))
     guesses.append(guess)
     print_word(show_guess(word, guesses))
 
     print ('\n\nNumber of wrong guesses: ' + str(wrong_guess_count(word, guesses))+'\n')
 
-    if wrong_guess_count(word, guesses) <= 7:
+    if wrong_guess_count(guess, guesses) <= 7:
         make_guess(word, guesses)
 
 
