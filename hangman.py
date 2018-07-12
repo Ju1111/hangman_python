@@ -13,11 +13,11 @@ def wrong_guess_count(word, guesses):
 def winner(word, guesses):
     if word == show_guess(word, guesses):
         print ('Yaaaaay, you won!')
-        print ('The word was indeed ' + word.upper())
+        print ('The city was indeed ' + word.upper())
         return play_again()
     elif wrong_guess_count(word, guesses) > 6:
         print ('You Lost!')
-        print ('The correct word would have been ' + word.upper())
+        print ('The correct city would have been ' + word.upper())
         return play_again()
     else:
         return True
@@ -67,15 +67,15 @@ def make_guess(word, guesses):
 
     if skip_duplicate(guess, guesses):
         make_guess(word, guesses)
+    else:
+        print ('Player wrote: %s' % (guess))
+        guesses.append(guess)
+        print_word(show_guess(word, guesses))
 
-    print ('Player wrote: %s' % (guess))
-    guesses.append(guess)
-    print_word(show_guess(word, guesses))
+        print ('\n\nNumber of wrong guesses: ' + str(wrong_guess_count(word, guesses))+'\n')
 
-    print ('\n\nNumber of wrong guesses: ' + str(wrong_guess_count(word, guesses))+'\n')
-
-    if wrong_guess_count(guess, guesses) <= 7:
-        make_guess(word, guesses)
+        if wrong_guess_count(word, guesses) <= 7:
+            make_guess(word, guesses)
 
 
 make_guess(random.choice(words), [])
