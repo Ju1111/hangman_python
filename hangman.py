@@ -28,6 +28,7 @@ def play_again():
     if question.lower() == 'y':
         make_guess(random.choice(words), [])
     elif question.lower() == 'n':
+        print('\nNo? Alright then, goodbyeeee!')
         return False
     else:
         print ('Please chose y or n')
